@@ -1,6 +1,8 @@
 FROM debian:9
 
-ENV TEST One "two two" three four
+ENV DQUOTE One "two two" three four
+ENV SQUOTE One 'two two' three four
+ENV BACKTICK One `two two` three four
 
-CMD ["/bin/sh", "-c", "echo $TEST"]
+CMD ["/bin/sh", "-c", "echo $DQUOTE; echo $SQUOTE; echo $BACKTICK"]
 
