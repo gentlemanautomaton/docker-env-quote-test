@@ -19,7 +19,7 @@ docker build -t gentlemanautomaton/docker-env-quote-test:latest .
 and inspect it to see what the `Env` entry actually contains...
 
 ```
-docker inspect gentlemanautomaton/docker-env-quote-test
+docker inspect gentlemanautomaton/docker-env-quote-test:latest
 
 "Env": [
 	"PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
