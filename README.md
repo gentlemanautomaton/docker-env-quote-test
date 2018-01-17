@@ -1,12 +1,13 @@
 # docker-env-quote-test
 
-This is a test `Dockerfile` showing that double and single quotes contained
-in an `ENV` statement are unexpectedly removed. The example `Dockerfile` has
-the following `ENV` instructions:
+This is a test `Dockerfile` showing that double quotes, single quotes and
+backslashes contained in an `ENV` statement are unexpectedly removed. The
+example `Dockerfile` has the following `ENV` instructions:
 
 ```
 ENV DQUOTE One "two two" three four
 ENV SQUOTE One 'two two' three four
+ENV BACKSLASH One two\ two three four
 ENV BACKTICK One `two two` three four
 ```
 
@@ -25,6 +26,7 @@ docker inspect gentlemanautomaton/docker-env-quote-test:latest
 	"PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
 	"DQUOTE=One two two three four",
 	"SQUOTE=One two two three four",
+	"BACKSLASH=One two two three four",
 	"BACKTICK=One `two two` three four"
 ],
 ```
