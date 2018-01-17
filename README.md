@@ -7,7 +7,8 @@ example `Dockerfile` has the following `ENV` instructions:
 ```
 ENV DQUOTE One "two two" three four
 ENV SQUOTE One 'two two' three four
-ENV BACKSLASH One two\ two three four
+ENV SBACKSLASH One two\ two three four
+ENV DBACKSLASH One two\\ two three four
 ENV BACKTICK One `two two` three four
 ```
 
@@ -26,12 +27,14 @@ docker inspect gentlemanautomaton/docker-env-quote-test:latest
 	"PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
 	"DQUOTE=One two two three four",
 	"SQUOTE=One two two three four",
-	"BACKSLASH=One two two three four",
+	"SBACKSLASH=One two two three four",
+	"DBACKSLASH=One two\\ two three four",
 	"BACKTICK=One `two two` three four"
 ],
 ```
 
-we see that the quotes have clearly been removed. This behavior contradicts
+we see that the quotes have been removed and the backslashes have been
+interpreted. This behavior contradicts
 [the documentation](https://docs.docker.com/engine/reference/builder/#env):
 
 > The `ENV` instruction has two forms. The first form, `ENV <key> <value>`, will
